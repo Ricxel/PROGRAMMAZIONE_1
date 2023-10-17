@@ -7,10 +7,7 @@ int fattoriale(int n){
     return n;
 }
 int main(){
-	int n;
-    do{
-		cin.clear();
-    	cout << "Inserisci un numero> ";
-    	cin >> n;
-    }while(n < 0 || cin.fail());
+	int v[4] = {1,2,3,4};
+
+	cout << v[100] << endl;
 }
