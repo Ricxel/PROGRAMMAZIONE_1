@@ -2,35 +2,33 @@ using namespace std;
 #include <iostream>
 #include <cmath>
 
-int palindromo_rec(int,int = 0,int = 1);
+int inverso_rec(int,int = 0);
+bool palindromo(int);
 
 int main(){
     int n;
     cout << "n> ";
     cin >> n;
 
-    bool ris = palindromo_rec(n);
-
-    cout << endl << "Ris: "<< ris << endl;;
+    if(palindromo(n))
+        cout << "Il numero è palindromo" << endl;
+    else cout << "Il numero non è palindromo" << endl;
 
 }
 
-int palindromo_rec(int n,int n2, int p){
-    int ris = n % 10;
-
-    int somma = ris * (int)pow(10,p-1);
-
-    n2 += somma;
-    cout << "Ris: " << n << "%" <<10 << " = " << ris << endl;
-    cout << "Somma: " << somma << endl;
-    if(ris == n){
-        return false;
+int inverso_rec(int n,int n2){
+    if(n == 0){
+        return n2;
     }
-    
-    palindromo_rec(n/10,n2,p+1);
-    
-    cout << "n2: " << n2 << endl;
-    if(n2 == n)
+    int cifra = n % 10;
+    n2 = n2*10 + cifra;
+
+    cout << n2 << endl;
+
+    return inverso_rec(n/10,n2);
+}
+bool palindromo(int n){
+    if(n == inverso_rec(n))
         return true;
     else return false;
 }
