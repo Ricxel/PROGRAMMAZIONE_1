@@ -9,7 +9,7 @@ void shift(int v[], int len, int indice, int i);
 void inserisci_rec(int v[], int len, int indice, int n);
 
 int main(){
-    int a[10];
+    int a[10];z
     int n,indice;
     srand(time(NULL));
     inizializza(10,a,DIM);
