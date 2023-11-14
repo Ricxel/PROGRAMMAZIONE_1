@@ -1,7 +1,7 @@
 # OPERAZIONI SUI NUMERI
 ## 0. `double pow(double a, int n)`
 >Calcola a^n^
-## 1. `int binToDec(string bin)`
+## 1. `int binToDec(char bin)`
 >Ritorna la conversione in decimale del numero binario dato.
    ### DIPENDENZE:
    - pow
@@ -29,4 +29,3 @@
    - max
    - swap
    - confronta
-

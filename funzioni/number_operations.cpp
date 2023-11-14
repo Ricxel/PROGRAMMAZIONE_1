@@ -1,6 +1,4 @@
-using namespace std;
-#include <iostream>
-
+#include "number_operations.h"
 double pow(double a, int n){
     double ris = 1;
     for(int i = 1; i <= n; i++){
@@ -8,11 +6,14 @@ double pow(double a, int n){
     }
     return ris;
 }
-int binToDec(string bin){
+int binToDec(char * bin){
     int dec = 0,i;
-    int len = bin.size();
+    int len = 0;
+    for(int i = 0; bin[i] != '\0'; i++){
+        len++;
+    }
     int p = len - 1;
-    for(int i = 0; i < len; i++){
+    for(int i = 0; bin[i] != '\0' && i < len; i++){
         dec += (bin[i]-'0')*pow(2,p);
         p--;
     }
