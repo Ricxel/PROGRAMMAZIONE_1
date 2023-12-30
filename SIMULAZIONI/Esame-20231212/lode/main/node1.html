@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.0//EN">
+
+<!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Esercizio Lode</TITLE>
+<META NAME="description" CONTENT="Esercizio Lode">
+<META NAME="keywords" CONTENT="main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019.2">
+
+<LINK REL="STYLESHEET" HREF="main.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="main.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A>
+<A
+ HREF="main.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A>
+<A
+ HREF="main.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>
+<BR>
+<B> Next:</B> <A
+ HREF="node2.html">About this document ...</A>
+<B> Up:</B> <A
+ HREF="main.html">main</A>
+<B> Previous:</B> <A
+ HREF="main.html">main</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html4"
+  HREF="node1.html#SECTION00010010000000000000">ATTENZIONE: Questo esercizio consente di conseguire la
+  lode, e viene valutato <U>se e solo se</U> tutti gli altri
+  esercizi sono stati svolti correttamente.</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00010000000000000000">
+Esercizio Lode</A>
+</H1>
+
+<P>
+
+<H4>
+ATTENZIONE: Questo esercizio consente di conseguire la
+  lode, e viene valutato <U>se e solo se</U> tutti gli altri
+  esercizi sono stati svolti correttamente.
+</H4> <BR>
+
+<P>
+Un qualunque numero razionale <IMG STYLE="height: 4.36ex; vertical-align: -1.70ex; " SRC="img1.svg"
+ ALT="$\displaystyle \frac{n}{d}$"> con <IMG STYLE="height: 1.79ex; vertical-align: -0.20ex; " SRC="img2.svg"
+ ALT="$n &gt;= 0$">
+e <IMG STYLE="height: 1.91ex; vertical-align: -0.20ex; " SRC="img3.svg"
+ ALT="$d&gt;0$"> può essere rappresentato mediante i coefficienti
+<IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img4.svg"
+ ALT="$[a_0,a_1,a_2, ..., a_n]$"> di una frazione continua
+<IMG STYLE="height: 7.09ex; vertical-align: -3.94ex; " SRC="img5.svg"
+ ALT="$\displaystyle a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + ...}}}$">
+
+<P>
+Ad esempio i coefficienti di una frazione continua per
+<IMG STYLE="height: 4.86ex; vertical-align: -1.70ex; " SRC="img6.svg"
+ ALT="$\displaystyle \frac{415}{93}$"> sono: [4, 2, 6, 7].
+
+<P>
+In generale il coefficiente <IMG STYLE="height: 1.56ex; vertical-align: -0.45ex; " SRC="img7.svg"
+ ALT="${\displaystyle a_{n}}$"> può
+essere calcolato usando la seguente formula ricorsiva:
+<IMG STYLE="height: 5.32ex; vertical-align: -2.07ex; " SRC="img8.svg"
+ ALT="${\displaystyle a_{n}=\left\lfloor {\frac{N_{n}}{D_{n}}}\right\rfloor}$">
+dove
+<IMG STYLE="height: 6.55ex; vertical-align: -2.71ex; " SRC="img9.svg"
+ ALT="$\displaystyle \left\{
+\begin{array}{l}
+N_{n+1}=D_{n} / G_n\\
+D_{n+1}=(N_{n}{\bmod {D}}_{n})/G_n
+\end{array}\right.
+$">
+e <IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img10.svg"
+ ALT="$\displaystyle G_n = gcd(D_n, N_{n}{\bmod {D}}_{n})$">.
+
+<P>
+Da cui si deduce che la sequenza <IMG STYLE="height: 1.56ex; vertical-align: -0.45ex; " SRC="img7.svg"
+ ALT="${\displaystyle a_{n}}$">
+termina se <IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img11.svg"
+ ALT="${\displaystyle D_{n}=0}$">. La divisione per <IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img12.svg"
+ ALT="$G_n$">
+garantisce di considerare ad ogni step la frazione semplificata
+(i.e. <IMG STYLE="height: 3.01ex; vertical-align: -0.91ex; " SRC="img13.svg"
+ ALT="$\frac{12}{8} = \frac{3}{2}$">).
+
+<P>
+Completare il programma <TT>lode.cc</TT> inserendo la definizione
+della funzione <TT>compute_continued_fraction_elements</TT>
+corrispondente alla dichiarazione seguente:
+<PRE>
+void compute_continued_fraction_elements(const int num, const int den,
+					 int res[], const int res_maxdim);
+</PRE>
+che prende come argomento due interi positivi corrispondenti
+rispettivamente al numeratore ed al denominatore iniziali, e un array
+di interi di dimensione <TT>res_maxdim</TT> per memorizzare nella
+posizione i-esima il coefficiente <IMG STYLE="height: 1.56ex; vertical-align: -0.45ex; " SRC="img14.svg"
+ ALT="$a_i$">. Troncare il calcolo dei
+coefficienti alla dimensione <TT>res_maxdim</TT> nel caso raggiungere
+la condizione di terminazione <IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img15.svg"
+ ALT="$D_n = 0$"> richieda un
+<IMG STYLE="height: 2.34ex; vertical-align: -0.63ex; " SRC="img16.svg"
+ ALT="$n \ge res\_maxdim$">.
+
+<P>
+<B>Note</B>:
+
+<UL>
+<LI>Scaricare il file <code>lode.cc</code>, modificarlo solo per inserire
+  la definizione della funzione <B>ricorsiva</B>
+  <TT>compute_continued_fraction_elements</TT>, e caricare il file
+  risultato delle vostre modifiche a soluzione di questo esercizio
+  nello spazio apposito.
+</LI>
+<LI>L'implementazione della funzione <TT>gcd</TT> NON
+  è richiesto che sia ricorsiva.
+</LI>
+<LI>All'interno di questo programma <B>non</B> è ammesso
+  l'utilizzo di variabili globali o di tipo <TT>static</TT> e di
+  funzioni di libreria al di fuori di quelle definite in
+  <TT>iostream</TT>.
+</LI>
+</UL>
+
+<P>
+Il programma per essere eseguito si aspetta di ricevere come
+argomento due numeri positivi che rappresentano rispettivamente il
+numeratore ed il denominatore della frazione di partenza.
+Questi sono esempi di esecuzioni:
+<PRE>
+computer &gt; ./a.out 415 93
+The continued fraction representation for 415/93 is
+ 4 2 6 7
+</PRE>
+<PRE>
+computer &gt; ./a.out 3 7
+The continued fraction representation for 3/7 is
+ 0 2 3
+</PRE>
+<PRE>
+computer &gt; ./a.out 649 200
+The continued fraction representation for 649/200 is
+ 3 4 12 4
+</PRE>
+<PRE>
+computer &gt; ./a.out 355 113
+The continued fraction representation for 355/113 is
+ 3 7 16
+</PRE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A>
+<A
+ HREF="main.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A>
+<A
+ HREF="main.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>
+<BR>
+<B> Next:</B> <A
+ HREF="node2.html">About this document ...</A>
+<B> Up:</B> <A
+ HREF="main.html">main</A>
+<B> Previous:</B> <A
+ HREF="main.html">main</A>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

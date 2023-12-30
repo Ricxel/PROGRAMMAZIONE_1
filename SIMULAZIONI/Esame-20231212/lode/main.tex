@@ -1,0 +1,106 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenx}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+
+%\DeclareMathOperator{\gcd}{gcd}
+\begin{document}
+
+\sloppypar
+
+\section{Esercizio Lode}
+
+\paragraph{ATTENZIONE: Questo esercizio consente di conseguire la
+  lode, e viene valutato \underline{se e solo se} tutti gli altri
+  esercizi sono stati svolti correttamente.}\ \newline
+
+Un qualunque numero razionale $\displaystyle \frac{n}{d}$ con $n >= 0$
+e $d>0$ può essere rappresentato mediante i coefficienti
+$[a_0,a_1,a_2, ..., a_n]$ di una frazione continua
+$\displaystyle a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + ...}}}$
+
+\noindent Ad esempio i coefficienti di una frazione continua per
+$\displaystyle \frac{415}{93}$ sono: [4, 2, 6, 7].
+
+\noindent In generale il coefficiente ${\displaystyle a_{n}}$ può
+essere calcolato usando la seguente formula ricorsiva:
+${\displaystyle a_{n}=\left\lfloor {\frac{N_{n}}{D_{n}}}\right\rfloor}$
+dove
+$\displaystyle \left\{
+  \begin{array}{l}
+    N_{n+1}=D_{n} / G_n\\
+    D_{n+1}=(N_{n}{\bmod {D}}_{n})/G_n
+  \end{array}
+\right.
+$
+e $\displaystyle G_n = gcd(D_n, N_{n}{\bmod {D}}_{n})$.
+
+\noindent Da cui si deduce che la sequenza ${\displaystyle a_{n}}$
+termina se ${\displaystyle D_{n}=0}$. La divisione per $G_n$
+garantisce di considerare ad ogni step la frazione semplificata
+(i.e. $\frac{12}{8} = \frac{3}{2}$).
+
+Completare il programma \texttt{lode.cc} inserendo la definizione
+della funzione \texttt{compute\_continued\_fraction\_elements}
+corrispondente alla dichiarazione seguente:
+%
+\begin{verbatim}
+void compute_continued_fraction_elements(const int num, const int den,
+					 int res[], const int res_maxdim);
+\end{verbatim}
+%
+che prende come argomento due interi positivi corrispondenti
+rispettivamente al numeratore ed al denominatore iniziali, e un array
+di interi di dimensione \texttt{res\_maxdim} per memorizzare nella
+posizione i-esima il coefficiente $a_i$. Troncare il calcolo dei
+coefficienti alla dimensione \texttt{res\_maxdim} nel caso raggiungere
+la condizione di terminazione $D_n = 0$ richieda un
+$n \ge res\_maxdim$.
+
+\noindent \textbf{Note}:
+\begin{itemize}
+\item Scaricare il file \verb|lode.cc|, modificarlo solo per inserire
+  la definizione della funzione \textbf{ricorsiva}
+  \texttt{compute\_continued\_fraction\_elements}, e caricare il file
+  risultato delle vostre modifiche a soluzione di questo esercizio
+  nello spazio apposito.
+\item L'implementazione della funzione \texttt{gcd} NON
+  è richiesto che sia ricorsiva.
+\item All'interno di questo programma \textbf{non} è ammesso
+  l'utilizzo di variabili globali o di tipo \texttt{static} e di
+  funzioni di libreria al di fuori di quelle definite in
+  \texttt{iostream}.
+\end{itemize}
+
+\noindent Il programma per essere eseguito si aspetta di ricevere come
+argomento due numeri positivi che rappresentano rispettivamente il
+numeratore ed il denominatore della frazione di partenza.
+%
+Questi sono esempi di esecuzioni:
+\begin{verbatim}
+computer > ./a.out 415 93
+The continued fraction representation for 415/93 is
+ 4 2 6 7
+\end{verbatim}
+\begin{verbatim}
+computer > ./a.out 3 7
+The continued fraction representation for 3/7 is
+ 0 2 3
+\end{verbatim}
+\begin{verbatim}
+computer > ./a.out 649 200
+The continued fraction representation for 649/200 is
+ 3 4 12 4
+\end{verbatim}
+\begin{verbatim}
+computer > ./a.out 355 113
+The continued fraction representation for 355/113 is
+ 3 7 16
+\end{verbatim}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
