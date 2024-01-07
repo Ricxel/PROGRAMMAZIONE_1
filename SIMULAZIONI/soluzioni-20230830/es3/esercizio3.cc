@@ -91,31 +91,43 @@ bool trovaIlPianetaDiPartenza_rec(int& identificativoPianetaDiPartenza, int carb
 
     // CASO BASE 1: L'astronave ha fatto un giro completo dei pianeti
     //              (per esempio, l'identificativo del pianeta corrente e` uguale a quello di partenza)
-    if ( /* condizione */ ) {
+    if (identificativoPianetaCorrente == identificativoPianetaDiPartenza) {
         // 1. ritornare il valore booleano corretto
+        return true;
     }
 
 
 
     // CASO BASE 2: Sono stati esauriti i tentativi senza trovare un pianeta di partenza adatto
     //              (per esempio, "tentativi" e` uguale a "numeroDiPianeti")
-    else if ( /* condizione */ ) {
+    else if (tentativi == numeroDiPianeti) {
         // 1. settare "identificativoPianetaDiPartenza = -1;"
+        identificativoPianetaDiPartenza = -1;
         // 2. ritornare il valore booleano corretto
+        return false;
     }
 
 
 
     // INDUZIONE 1: L'astronave sta iniziando un nuovo viaggio
     //              (per esempio, la variabile "identificativoPianetaDiPartenza" ha un valore apposito)
-    else if ( /* condizione */ ) {
+    else if ( identificativoPianetaDiPartenza == -1) {
         // 1. settare "identificativoPianetaDiPartenza = identificativoPianetaCorrente;"
+        identificativoPianetaDiPartenza = identificativoPianetaCorrente;
         // 2. aggiornare il carburante corrente, controllando se e` sufficiente
         //    per il viaggio al pianeta successivo
+        bool controlloCarburante = true;
+        if(carburanteCorrente - distanzaPianetaCorrente <= 0){
+            controlloCarburante = false;
+        }
+        carburanteCorrente += carburantePianetaCorrente;
         // 3. modificare opportunamente la coda (per esempio, spostando il pianeta
         //    corrente in fondo alla coda con le funzioni dequeue/enqueue)
+        dequeue();
+        enqueue(identificativoPianetaCorrente, carburantePianetaCorrente, distanzaPianetaCorrente);
         // 4. invocare ricorsivamente la funzione "trovaIlPianetaDiPartenza_rec",
         //    ricordandone il valore di ritorno
+        bool ok = trovaIlPianetaDiPartenza_rec(identificativoPianetaCorrente, carburanteCorrente, numeroDiPianeti, tentativi);
         // 5. se il carburante corrente e` sufficiente per il viaggio al pianeta successivo
         //    e la funzione "trovaIlPianetaDiPartenza_rec" ha ritornato "true", allora il
         //    pianeta corrente e` un valido pianeta di partenza. Altrimenti:
@@ -124,6 +136,16 @@ bool trovaIlPianetaDiPartenza_rec(int& identificativoPianetaDiPartenza, int carb
         //    5.3 spostarsi al pianeta successivo (dequeue/enqueue)
         //    5.4 settare il carburante presente all'inizio del viaggio
         //    5.5 invocare ricorsivamente "trovaIlPianetaDiPartenza_rec"
+        if(ok){
+            return true;
+        }else{
+            identificativoPianetaDiPartenza = -1;
+            tentativi++;
+            dequeue();
+            enqueue(identificativoPianetaCorrente, carburantePianetaCorrente, distanzaPianetaCorrente);
+            carburanteCorrente = 1;
+            return trovaIlPianetaDiPartenza_rec(identificativoPianetaDiPartenza, carburanteCorrente, numeroDiPianeti, tentativi);
+        }
     }
 
 
@@ -132,10 +154,14 @@ bool trovaIlPianetaDiPartenza_rec(int& identificativoPianetaDiPartenza, int carb
     else {
         // 1. aggiornare il carburante corrente, controllando se e` sufficiente
         //    per il viaggio al pianeta successivo
+        carburanteCorrente += carburantePianetaCorrente;
         // 2. modificare opportunamente la coda (per esempio, spostando il pianeta
         //    corrente in fondo alla coda con le funzioni dequeue/enqueue)
+        dequeue();
+        enqueue(identificativoPianetaCorrente, carburantePianetaCorrente, distanzaPianetaCorrente);
         // 3. invocare ricorsivamente la funzione "trovaIlPianetaDiPartenza_rec",
         //    ricordandone il valore di ritorno
+        bool ok = trovaIlPianetaDiPartenza_rec(identificativoPianetaCorrente, carburanteCorrente, numeroDiPianeti, tentativi);
         // 4. ritornare un valore booleano che dica se il viaggio e` fattibile oppure
         //    no (per esempio, la congiunzione logica AND fra il valore tornato dalla
         //    funzione "trovaIlPianetaDiPartenza_rec" chiamata ricorsivamente e il

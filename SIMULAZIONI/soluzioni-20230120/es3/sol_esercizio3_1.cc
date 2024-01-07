@@ -9,9 +9,9 @@ int main() {
     
     // Potete modificare l'array di asteroidi (e la sua
     // dimensione) per testare la vostra soluzione
-    int asteroidi [] = {11, -5, -12, 4, -6};
-    int numeroAsteroidi = 5;
-
+    int asteroidi [] = {-6, 10, 5, 8, -9,5,-9,-3,9,-2,5};
+    int numeroAsteroidi = 11;
+    //-6 10 9 5
 
     int numeroAsteroidiRimasti;
     int * asteroidiRimasti = collidiAsteroidi(asteroidi, numeroAsteroidi, numeroAsteroidiRimasti);

@@ -1,0 +1,44 @@
+-----ESAME 2021-09-07------
+1) Correggi testo per punteggiatura
+2) Estrarre le chiocciole e metterle in una stringa di dimensioni giuste
+3) Labirinto
+-----ESAME 2022-01-11------
+1) Calcolatrice con conversione di base
+2) Trasformazione lettere e creazione liste
+3) Albero di ricerca binaria bilanciato
+-----ESAME 2022-02-23------
+1) Verifica correttezza parola e scrittura nel file di unica occorrenza
+2) Scorrimento lista discriminando pari/dispari (allocazione di liste nella funzione)
+3) Doppia coda singolo array
+-----ESAME 2022-06-17------
+1) Frasi con order
+2) Somma di cifre
+3) Dipendenti entrate uscite, conta occorrenze in lista
+-----ESAME 2022-07-29------
+1) Voti massimi (facile)
+2) Posizionamento di numeri in lista con discriminante (numero pari)
+3) Doppia pila con un array
+-----ESAME 2022-09-01------
+1) Conta lunghezza frasi e salva la più lunga
+2) Generare una lista con gli elementi pari dell'albero
+3) Decodifica IIDID
+-----ESAME 2023-01-20------
+1) Troncamento carattere e conversione basi base 36
+2) Scorrere un albero e fare due liste con i numeri pari e dispari in ordine crescente
+3) Collisioni asteroidi
+-----ESAME 2023-02-20------
+1) Shifting verso sinistra di parole lasciando coda e testa
+2) Scorrimento di albero binario creando 2 array per elementi pari e dispari
+3) Amici coda circolare
+-----ESAME 2023-06-19------
+1) Conta occorrenze, conversione in minuscola, shifting verso destra
+2) Media dei rami di un albero dei nodi con valori pari
+3) Lista con sottoliste (figli)
+-----ESAME 2023-07-28------
+1) Ricerca case sensitive
+2) Formula di taylor
+3) Grafi
+-----ESAME 2023-08-30------
+1) Ricerca non case sensitive
+2) Numero poligonale triangolare
+3) Astronave, pianeti e carburanti (lista circolare)

@@ -10,5 +10,6 @@ int max(int,int);
 void swap(int &, int &);
 void confronta(int &, int &);
 void sort(int &, int &, int &);
+int custom_atoi(const char *);
 
 #endif

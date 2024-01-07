@@ -65,3 +65,22 @@ void sort(int &n1, int &n2, int &n3){
 	confronta(n2,n3);
 	confronta(n1,n2);
 }
+int custom_atoi(const char* str) {
+    int result = 0;
+    int sign = 1;
+    size_t i = 0;
+
+    if (str[i] == '-') {
+        sign = -1;
+        ++i;
+    } else if (str[i] == '+') {
+        ++i;
+    }
+
+    while (str[i] >= '0' && str[i] <= '9') {
+        result = result * 10 + (str[i] - '0');
+        ++i;
+    }
+
+    return sign * result;
+}
