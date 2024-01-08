@@ -38,7 +38,7 @@ double factorial(int N) {
 
 // Aggiungere qui sotto la dichiarazione della funzione da
 // implementare
-
+list * function(float x, int N, double e);
 // Aggiungere qui sopra la dichiarazione della funzione da
 // implementare
 
@@ -81,6 +81,35 @@ int main(int argc, char **argv) {
 // Aggiungere qui sotto la definizione della funzione da
 // implementare
 
+void funzione_aux(list * &l, float x, int N, double e, int i){double
+  if(i <= N){
+    double val;
+    if(l != NULL)
+      val = l->info + pow(x, 2*i+1)/factorial(2*i + 1);
+    else val = pow(x, 2*i+1)/factorial(2*i + 1);
+    // std::cout << "conta: " << i << ' ';
 
+    if(l != NULL){//esiste un precedente, devo fare il controllo
+      double a = val - l->info;
+      if(a < 0) a *= -1;
+
+      double b = l->info;
+      if(b < 0) b *= -1;
+      if(a < e * b){
+        return;
+      }
+    }
+    list *nuovo_nodo = new list{val, l};
+    l = nuovo_nodo;
+    funzione_aux(l,x,N,e,i+1);
+    
+  }
+
+}
+list * function(float x, int N, double e){
+  list *root = NULL;
+  funzione_aux(root, x, N, e, 0);
+  return root;
+}
 // Aggiungere qui sopra la definizione della funzione da
 // implementare

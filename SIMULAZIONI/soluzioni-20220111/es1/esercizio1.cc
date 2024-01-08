@@ -1,80 +1,77 @@
-// Inserire tutto quello che serve qui
 #include <iostream>
 #include <fstream>
 #include <cmath>
 #include <cstring>
 using namespace std;
 
-const int NCIFRE = 10;
-int converti(char *);
-int operazione(int,int,char);
+int converti_a_dec(char *s, int base);
+int operazione(int a, int b, char op);
 
-int main(int argc, char ** argv){
-    if(argc != 3){
-        cout << "Parametri non validi" << endl;
+const int DIM = 11;
+int main(int argc, char **argv){
+    if(argc != 2){
+        cout << "Parametri errati" << endl;
         return -1;
     }
 
-    fstream in,out;
+    fstream in, out;
     in.open(argv[1], ios::in);
-    out.open(argv[2],ios::out);
+    out.open("output.txt",ios::out);
 
-    if(in.fail() || out.fail()) {
-        cout << "Errore nell'apertura del file" << endl;
-        exit(-2);
+    if(in.fail() || out.fail()){
+      cout << "Errore nell'apertura del file" << endl;
+      return -2;
     }
-    
-    char n1[NCIFRE];
-    char n2[NCIFRE];
+
+    char a[DIM];
+    char b[DIM];
     char op;
-    bool ok = true;
-    int m1, m2;
-    while(!in.eof()){
-        in >> n1;
-        in >> op;
-        ok = !in.eof();
-        in >> n2;
-        if(ok){
-            cout << n1 << ' ' << op << ' ' << n2 << endl;
-            m1 = converti(n1);
-            m2 = converti(n2);
-            int ris = operazione(m1,m2,op);
-            out << ris << endl;
-        }
+
+    while(in >> a && in >> op && in >> b){
+      int aInt = converti_a_dec(a, 17);
+      int bInt = converti_a_dec(b, 17);
+
+      int ris = operazione(aInt, bInt, op);
+      out << ris << endl;
     }
-    
+
+
     in.close();
     out.close();
     return 0;
 }
-int converti(char *s){
+int converti_a_dec(char *s, int base){
+    int cifra;
     int ris = 0;
+    int len = strlen(s);
     int esp = 0;
-    const int OFFSET = '0';
-    for(int i = strlen(s) - 1; i >= 0; i--){
-        char c = s[i];
-        if(c >= 'A' && c <= 'Z'){
-            c = c - 'A' + 10;
-        }
-        else c -= OFFSET; 
-        ris += c*pow(17, esp++);
+    for(int i = len-1; i >= 0; i--){
+        if(s[i] >= '0' && s[i] <= '9')
+            cifra = s[i] - '0';
+        else if(s[i] >= 'A' && s[i] <= 'Z')
+            cifra = s[i] - 'A' + 10;
+        else if(s[i] >= 'a' && s[i] <= 'z')
+            cifra = s[i] - 'a' + 10;
+        ris += pow(base, esp++) * cifra;
     }
     return ris;
 }
-int operazione(int n1, int n2, char op){
-    int ris = 0;
-    switch(op){
-        case '+':
-            ris = n1 + n2;
-            break;
-        case '*':
-            ris = n1 * n2;
-            break;
-        case '^':
-            ris = pow(n1,n2);
-            break;
-        default:
-            break;
-    }
-    return ris;
+int operazione(int a, int b, char op){
+  int ris;
+  switch (op)
+  {
+  case '+':
+    ris = a + b;
+    break;
+  case '*':
+    ris = a*b;
+    break;
+  case '^':
+    ris = pow(a,b);
+    break;
+  default:
+    ris = -1;
+    break;
+  }
+  return ris;
 }
